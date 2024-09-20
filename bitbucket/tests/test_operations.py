@@ -925,11 +925,7 @@ def test_list_pull_requests_comments_invalid_fromId(valid_credentials_with_token
 def test_clone_repository_success(valid_credentials_with_token, input_params):
     logger.info("params: {0}".format(input_params))
     result = operations['clone_repository'](valid_credentials_with_token, input_params.copy())
-    logger.error(f'xclone: {result}')
-    params['update_clone_repository'][0]['clone_path'] = result.get('path')
     assert result
-
-  
     
 # Ensure that the provided input_params yield the correct output schema, or adjust the index in the list below.
 # conditional_output_schema not supported.

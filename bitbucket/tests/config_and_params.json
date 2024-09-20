@@ -206,75 +206,12 @@
             "clone_zip": false
         }
     ],
-    "update_clone_repository": [
-        {
-            "file_iri": "Required_text",
-            "clone_path": "Required_text"
-        }
-    ],
     "list_merge_requests_reviewers": [
         {
             "repo_type": "Organization",
             "org": "CICD",
             "repo_name": "test-repo",
             "id": "Required_integer"
-        }
-    ],
-    "list_project_issues": [
-        {
-            "repo_type": "Organization",
-            "org": "CICD",
-            "repo_name": "test-repo",
-            "assignee_id": null,
-            "state": "Opened",
-            "created_after": "2024-09-10T05:12:40.772Z",
-            "updated_after": "2024-09-10T05:12:40.773Z",
-            "order_by": "Created Date",
-            "sort": "Descending",
-            "page": null,
-            "per_page": null,
-            "other_fields": null
-        }
-    ],
-    "create_issue": [
-        {
-            "repo_type": "Organization",
-            "org": "CICD",
-            "repo_name": "test-repo",
-            "title": "Required_text",
-            "description": null,
-            "assignee_name": null,
-            "assignee_names": null,
-            "labels": null,
-            "other_fields": null
-        }
-    ],
-    "update_issue": [
-        {
-            "repo_type": "Organization",
-            "org": "CICD",
-            "repo_name": "test-repo",
-            "issue_iid": "Required_text",
-            "title": null,
-            "description": null,
-            "assignee_names": null,
-            "confidential": "True",
-            "issue_type": "Issue",
-            "state_event": "Reopen",
-            "labels": null,
-            "due_date": null,
-            "other_fields": null
-        }
-    ],
-    "create_issue_comment": [
-        {
-            "repo_type": "Organization",
-            "org": "CICD",
-            "repo_name": "test-repo",
-            "issue_iid": "Required_text",
-            "body": "Required_richtext",
-            "confidential": true,
-            "other_fields": null
         }
     ],
     "invalid_params": {
