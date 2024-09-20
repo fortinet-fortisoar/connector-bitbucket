@@ -1,0 +1,289 @@
+{
+    "config": [
+        {
+            "server_url": "http://10.132.254.121:7990",
+            "username": "sameer",
+            "api_key": "BBDC-MjQ0MzA2ODY5MDM4OtO1FmHvQkPf2i3+HCj5GWER7pSX",
+            "verify_ssl": true
+        }
+    ],
+    "create_repository": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "name": "new-repo",
+            "display_name": "new-repo",
+            "links": null
+        }
+    ],
+    "delete_repository": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "new-repo"
+        }
+    ],
+    "get_file_from_repository": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "at": "main",
+            "file_path": "test_operations.py",
+            "size": false,
+            "type": false,
+            "blame": false
+        }
+    ],
+    "create_update_file_contents": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "file_path": "test_operations.py",
+            "branch": "main",
+            "content": "new file data",
+            "message": "this is message",
+            "sourceBranch": null,
+            "sourceCommitId": null
+        }
+    ],
+    "update_user_repository_permission": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "name": "tester",
+            "permission": "READ"
+        }
+    ],
+    "get_users_with_repository_permission": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "filter": "",
+            "start": null,
+            "limit": null
+        }
+    ],
+    "find_repository_branches": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "filterText": null,
+            "boostMatches": false,
+            "details": false,
+            "order": "ALPHABETICAL",
+            "start": null,
+            "limit": null
+        }
+    ],
+    "create_repository_branch": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "name": "develop",
+            "startPoint": "main"
+        }
+    ],
+    "delete_repository_branch": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "name": "develop",
+            "endPoint": null,
+            "dryRun": false
+        }
+    ],
+    "list_pull_request": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "pull_number": null,
+            "filterText": null,
+            "state": "ALL",
+            "direction": "INCOMING",
+            "at": null,
+            "withAttributes": true,
+            "withProperties": true,
+            "draft": "False",
+            "order": "Newest",
+            "start": null,
+            "limit": null
+        }
+    ],
+    "merge_pull_request": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "pullRequestId": "1",
+            "message": null,
+            "strategyId": "Merge Commit",
+            "version": null,
+            "autoSubject": true,
+            "autoMerge": false
+        }
+    ],
+    "create_pull_request": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "fromRef": "develop",
+            "toRef": "main",
+            "title": "This is PR from pytest",
+            "description": "This PR is raised from pytest script for UTC",
+            "reviewers": null,
+            "draft": false,
+            "additional_fields": {
+                "version": 1,
+                "open": true
+            }
+        }
+    ],
+    "create_pull_request_comment": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "id": "Required_integer",
+            "text": "Required_richtext",
+            "severity": "NORMAL",
+            "state": "Open",
+            "other_fields": null
+        }
+    ],
+    "list_tags": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "filterText": null,
+            "orderBy": "ALPHABETICAL",
+            "start": null,
+            "limit": null
+        }
+    ],
+    "create_tag": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "name": "tag-success",
+            "startPoint": "main",
+            "message": null,
+            "type": "ANNOTATED",
+            "force": false
+        }
+    ],
+    "get_web_url": [
+        {}
+    ],
+    "list_pull_requests_comments": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "id": 3,
+            "fromId": null,
+            "fromType": "COMMENT",
+            "start": null,
+            "limit": null
+        }
+    ],
+    "clone_repository": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "branch_name": "main",
+            "clone_zip": false
+        }
+    ],
+    "update_clone_repository": [
+        {
+            "file_iri": "Required_text",
+            "clone_path": "Required_text"
+        }
+    ],
+    "list_merge_requests_reviewers": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "id": "Required_integer"
+        }
+    ],
+    "list_project_issues": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "assignee_id": null,
+            "state": "Opened",
+            "created_after": "2024-09-10T05:12:40.772Z",
+            "updated_after": "2024-09-10T05:12:40.773Z",
+            "order_by": "Created Date",
+            "sort": "Descending",
+            "page": null,
+            "per_page": null,
+            "other_fields": null
+        }
+    ],
+    "create_issue": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "title": "Required_text",
+            "description": null,
+            "assignee_name": null,
+            "assignee_names": null,
+            "labels": null,
+            "other_fields": null
+        }
+    ],
+    "update_issue": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "issue_iid": "Required_text",
+            "title": null,
+            "description": null,
+            "assignee_names": null,
+            "confidential": "True",
+            "issue_type": "Issue",
+            "state_event": "Reopen",
+            "labels": null,
+            "due_date": null,
+            "other_fields": null
+        }
+    ],
+    "create_issue_comment": [
+        {
+            "repo_type": "Organization",
+            "org": "CICD",
+            "repo_name": "test-repo",
+            "issue_iid": "Required_text",
+            "body": "Required_richtext",
+            "confidential": true,
+            "other_fields": null
+        }
+    ],
+    "invalid_params": {
+        "text": "qwertyuioplkjhgfdsazxcvbnm!^*",
+        "password": "*******",
+        "integer": -123,
+        "json": {
+            "key": "value"
+        },
+        "textarea": "kdzckdsldjnvdjksncjdnvjdsvnjdsnvmldjnvmldsnvmdddkvmd;ldaf,ckdacd vcmd v,mcd l.v sd.v ms mc m,cm, m,c c"
+    }
+}
