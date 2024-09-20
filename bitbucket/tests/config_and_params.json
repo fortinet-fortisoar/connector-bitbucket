@@ -153,7 +153,7 @@
             "org": "CICD",
             "repo_name": "test-repo",
             "id": "Required_integer",
-            "text": "Required_richtext",
+            "text": "This is the comment from pytest",
             "severity": "NORMAL",
             "state": "Open",
             "other_fields": null
@@ -204,14 +204,6 @@
             "repo_name": "test-repo",
             "branch_name": "main",
             "clone_zip": false
-        }
-    ],
-    "list_merge_requests_reviewers": [
-        {
-            "repo_type": "Organization",
-            "org": "CICD",
-            "repo_name": "test-repo",
-            "id": "Required_integer"
         }
     ],
     "invalid_params": {
