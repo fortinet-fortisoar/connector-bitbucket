@@ -1,9 +1,9 @@
 {
     "config": [
         {
-            "server_url": "http://10.132.254.121:7990",
-            "username": "sameer",
-            "api_key": "BBDC-MjQ0MzA2ODY5MDM4OtO1FmHvQkPf2i3+HCj5GWER7pSX",
+            "server_url": "",
+            "username": "",
+            "api_key": "",
             "verify_ssl": true
         }
     ],

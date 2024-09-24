@@ -1,11 +1,11 @@
-""" Copyright start
-Copyright (C) 2008 - 2024 Fortinet Inc.
-All rights reserved.
-FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end
+"""
 
 SCM_ID = "git"
-# USER_ENDPOINT = "/rest/api/1.0/users/{0}"
 REPOSITORY_ENDPOINT = "/rest/api/latest/projects/{0}/repos"
 FILE_ENDPOINT = "/rest/api/latest/projects/{0}/repos/{1}/browse/{2}"
 REPOSITORY_PERMISSION_ENDPOINT = '/rest/api/latest/projects/{0}/repos/{1}/permissions/users'

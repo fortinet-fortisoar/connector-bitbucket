@@ -174,7 +174,7 @@
             {
               "uuid": "ccceea5d-428f-41e7-905f-05f17a88fb0d",
               "@type": "WorkflowStep",
-              "name": "Get File",
+              "name": "Get File Details",
               "description": null,
               "status": null,
               "arguments": {
@@ -190,7 +190,7 @@
                 "version": "1.0.0",
                 "connector": "bitbucket",
                 "operation": "get_file_from_repository",
-                "operationTitle": "Get File"
+                "operationTitle": "Get File Details"
               },
               "left": "188",
               "top": "120",
@@ -199,7 +199,7 @@
           ],
           "triggerLimit": null,
           "description": "Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.",
-          "name": "Get File",
+          "name": "Get File Details",
           "tag": "#Bitbucket",
           "recordTags": [
             "Bitbucket",
@@ -217,7 +217,7 @@
               "@type": "WorkflowRoute",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get File",
+              "name": "Start-> Get File Details",
               "sourceStep": "/api/3/workflow_steps/9ac1ecd3-7596-481a-8fd5-dcb59f887fde",
               "targetStep": "/api/3/workflow_steps/ccceea5d-428f-41e7-905f-05f17a88fb0d"
             }

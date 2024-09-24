@@ -231,7 +231,7 @@
     },
     {
       "operation": "get_file_from_repository",
-      "title": "Get File",
+      "title": "Get File Details",
       "description": "Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.",
       "category": "investigation",
       "annotation": "get_file_from_repository",

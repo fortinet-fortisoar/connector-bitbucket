@@ -1,5 +1,11 @@
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end
+"""
+
 import requests
-from urllib.parse import quote, unquote
 import json
 import os
 from zipfile import ZipFile
@@ -53,7 +59,6 @@ class BitBucket:
                 else:
                     if response.status_code == 304:
                         return None
-                    return response.json()
                 return response.json()
             elif response.status_code == 400:
                 error_response = response.json()
