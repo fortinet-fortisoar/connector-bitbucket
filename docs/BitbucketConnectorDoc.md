@@ -38,7 +38,7 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 The following automated operations can be included in playbooks, and you can also use the annotations to access operations from FortiSOAR&trade; release 4.10.0 and onwards:
 <table border=1><thead><tr><th>Function</th><th>Description</th><th>Annotation and Category</th></tr></thead><tbody><tr><td>Create Repository</td><td>Creates a new repository based on the repository type, repository name, and other input parameters that you have specified.</td><td>create_repository <br/>Investigation</td></tr>
 <tr><td>Delete Repository</td><td>Deletes a repository including all associated resources, like issues and pull requests, based on the repository type, repository name, and other input parameters that you have specified.</td><td>delete_repository <br/>Investigation</td></tr>
-<tr><td>Get File</td><td>Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.</td><td>get_file_from_repository <br/>Investigation</td></tr>
+<tr><td>Get File Details</td><td>Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.</td><td>get_file_from_repository <br/>Investigation</td></tr>
 <tr><td>Create or Update File Contents</td><td>Creates or updates a single file in the Bitbucket repository based on the repository ID, branch name, file name and other input parameters.</td><td>update_file_in_repository <br/>Investigation</td></tr>
 <tr><td>Update User Repository Permission</td><td>Updates(promote or demote) a user's permission levels for specified repository.</td><td>update_user_repository_permission <br/>Investigation</td></tr>
 <tr><td>Get Member List of Repository</td><td>Retrieves a list of group or repository members viewable by the authenticated user, including inherited members, invited users, and permissions through ancestor groups.</td><td>get_users_with_repository_permission <br/>Investigation</td></tr>
@@ -124,7 +124,7 @@ The output contains the following populated JSON schema:
     "exceptionName": ""
 }</pre>
 
-### operation: Get File
+### operation: Get File Details
 #### Input parameters
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Repository Type</td><td>Select the type of the repository from which to retrieve the file. You can select from the following options: Organization, User.
 <br><strong>If you choose 'Organization'</strong><ul><li>Organization Name: Specify the name of the organization on Bitbucket, within whose repository the file is to be retrieved.</li></ul><strong>If you choose 'User'</strong><ul><li>Repository Owner: Specify the name of the repository owner on Bitbucket, within whose repository the file is to be retrieved.</li></ul></td></tr><tr><td>Repository Name</td><td>Specify the name of the repository from which the file is to be retrieved.
@@ -1043,7 +1043,7 @@ The `Sample - bitbucket - 1.0.0` playbook collection comes bundled with the Bitb
 - Create or Update File Contents
 - Delete Repository
 - Delete Repository Branch
-- Get File
+- Get File Details
 - Get Member List of Repository
 - Get Pull Request Comments
 - Get Pull Request List
