@@ -1,0 +1,1438 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "1a139943-7517-431b-97bd-29afc834cbe6",
+      "@type": "WorkflowCollection",
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "6972b48a-77cf-4f62-a995-db308b89a468",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "fbaa5eec-3798-4de9-89bb-e16d3e3992f6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "2ae6fdaf-bcf1-4503-8775-4d387f9b9194",
+              "@type": "WorkflowStep",
+              "name": "Create Repository",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "name": "",
+                  "display_name": "",
+                  "links": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_repository",
+                "operationTitle": "Create Repository"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new repository based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Create Repository",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fbaa5eec-3798-4de9-89bb-e16d3e3992f6",
+          "routes": [
+            {
+              "uuid": "41b30757-4e8e-4dcd-8c1e-a1739c14a225",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Repository",
+              "sourceStep": "/api/3/workflow_steps/fbaa5eec-3798-4de9-89bb-e16d3e3992f6",
+              "targetStep": "/api/3/workflow_steps/2ae6fdaf-bcf1-4503-8775-4d387f9b9194"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "1b6a79fe-b97c-4bb2-9ff6-35cd8f2356b8",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "3a267033-c1a1-4482-a51a-f8fd7411cf5f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "4805d0b3-6524-46df-ada3-096102fa8ba8",
+              "@type": "WorkflowStep",
+              "name": "Delete Repository",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "delete_repository",
+                "operationTitle": "Delete Repository"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes a repository including all associated resources, like issues and pull requests, based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Delete Repository",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/3a267033-c1a1-4482-a51a-f8fd7411cf5f",
+          "routes": [
+            {
+              "uuid": "bbedb2e5-3c49-49b7-8914-910bdc335468",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Repository",
+              "sourceStep": "/api/3/workflow_steps/3a267033-c1a1-4482-a51a-f8fd7411cf5f",
+              "targetStep": "/api/3/workflow_steps/4805d0b3-6524-46df-ada3-096102fa8ba8"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "636230bd-9975-4af1-94f8-075824324a2a",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "9ac1ecd3-7596-481a-8fd5-dcb59f887fde",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "ccceea5d-428f-41e7-905f-05f17a88fb0d",
+              "@type": "WorkflowStep",
+              "name": "Get File Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "at": "",
+                  "file_path": "",
+                  "size": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "get_file_from_repository",
+                "operationTitle": "Get File Details"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.",
+          "name": "Get File Details",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/9ac1ecd3-7596-481a-8fd5-dcb59f887fde",
+          "routes": [
+            {
+              "uuid": "13f77b02-503d-4bae-ad0f-482ca9512fb5",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get File Details",
+              "sourceStep": "/api/3/workflow_steps/9ac1ecd3-7596-481a-8fd5-dcb59f887fde",
+              "targetStep": "/api/3/workflow_steps/ccceea5d-428f-41e7-905f-05f17a88fb0d"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "03208c93-0c9a-47b2-9c4c-503fbdf8ba9c",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "a8cd20fd-d09d-4c08-a1fd-c621a9a77d56",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "341d38d6-3edb-4f39-8419-f425f88457d8",
+              "@type": "WorkflowStep",
+              "name": "Create or Update File Contents",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "file_path": "",
+                  "branch": "",
+                  "content": "",
+                  "message": "",
+                  "sourceBranch": "",
+                  "sourceCommitId": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_update_file_contents",
+                "operationTitle": "Create or Update File Contents"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates or updates a single file in the Bitbucket repository based on the repository ID, branch name, file name and other input parameters.",
+          "name": "Create or Update File Contents",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/a8cd20fd-d09d-4c08-a1fd-c621a9a77d56",
+          "routes": [
+            {
+              "uuid": "161d1ba1-d965-4c1d-a5b8-57491c3d2610",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create or Update File Contents",
+              "sourceStep": "/api/3/workflow_steps/a8cd20fd-d09d-4c08-a1fd-c621a9a77d56",
+              "targetStep": "/api/3/workflow_steps/341d38d6-3edb-4f39-8419-f425f88457d8"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b99bc86f-569b-48b2-b098-63e9bc022a97",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "b44d73eb-dfa5-4e9e-bbd1-00345496b512",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "155e80bc-b15f-4a99-9095-253ee452db7c",
+              "@type": "WorkflowStep",
+              "name": "Update User Repository Permission",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "name": "",
+                  "permission": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "update_user_repository_permission",
+                "operationTitle": "Update User Repository Permission"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Updates(promote or demote) a user's permission levels for specified repository.",
+          "name": "Update User Repository Permission",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b44d73eb-dfa5-4e9e-bbd1-00345496b512",
+          "routes": [
+            {
+              "uuid": "6bde1c40-b245-4b99-988b-2deb58e826cf",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update User Repository Permission",
+              "sourceStep": "/api/3/workflow_steps/b44d73eb-dfa5-4e9e-bbd1-00345496b512",
+              "targetStep": "/api/3/workflow_steps/155e80bc-b15f-4a99-9095-253ee452db7c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "3ecfc63b-5188-417c-853e-0b2bc6ed41ad",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "59d9e62f-2795-4609-b50c-96035d0f02e4",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "553c8d8e-14b9-4df9-8ed5-a216b36475f3",
+              "@type": "WorkflowStep",
+              "name": "Get Member List of Repository",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "filter": "",
+                  "start": "",
+                  "limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "get_users_with_repository_permission",
+                "operationTitle": "Get Member List of Repository"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a list of group or repository members viewable by the authenticated user, including inherited members, invited users, and permissions through ancestor groups.",
+          "name": "Get Member List of Repository",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/59d9e62f-2795-4609-b50c-96035d0f02e4",
+          "routes": [
+            {
+              "uuid": "b691b0e1-1536-4fa8-83f1-e6c96de944c1",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Member List of Repository",
+              "sourceStep": "/api/3/workflow_steps/59d9e62f-2795-4609-b50c-96035d0f02e4",
+              "targetStep": "/api/3/workflow_steps/553c8d8e-14b9-4df9-8ed5-a216b36475f3"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "72a7afa7-2788-4124-b54c-f1d84d6663ee",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "99d39054-03b5-46ff-93b7-a0d2b9efb05d",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "74ba82f4-c546-430f-ab39-59e7e9fe053f",
+              "@type": "WorkflowStep",
+              "name": "Get Repository Branch List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "filterText": "",
+                  "boostMatches": "",
+                  "details": "",
+                  "order": "",
+                  "start": "",
+                  "limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "find_repository_branches",
+                "operationTitle": "Get Repository Branch List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Lists repository branches for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+          "name": "Get Repository Branch List",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/99d39054-03b5-46ff-93b7-a0d2b9efb05d",
+          "routes": [
+            {
+              "uuid": "72e4fbb8-6c6f-42c7-a1f6-02320df639ee",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Repository Branch List",
+              "sourceStep": "/api/3/workflow_steps/99d39054-03b5-46ff-93b7-a0d2b9efb05d",
+              "targetStep": "/api/3/workflow_steps/74ba82f4-c546-430f-ab39-59e7e9fe053f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "72aeaa6f-f354-4d23-876a-16b4180824da",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "57cb9727-3a62-459d-bb06-52ecb923fdda",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "838a7afe-7665-4a92-8c6a-88a1e337ea41",
+              "@type": "WorkflowStep",
+              "name": "Create Repository Branch",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "name": "",
+                  "startPoint": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_repository_branch",
+                "operationTitle": "Create Repository Branch"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new branch in the repository based on the repository type, branch name, and other input parameters that you have specified.",
+          "name": "Create Repository Branch",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/57cb9727-3a62-459d-bb06-52ecb923fdda",
+          "routes": [
+            {
+              "uuid": "930a2e44-3394-45a3-b748-58bc234ce57d",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Repository Branch",
+              "sourceStep": "/api/3/workflow_steps/57cb9727-3a62-459d-bb06-52ecb923fdda",
+              "targetStep": "/api/3/workflow_steps/838a7afe-7665-4a92-8c6a-88a1e337ea41"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b100aabf-62a4-4a7a-aa59-0c01cbd2ef0d",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "ccc0ff94-b7a4-4c35-85e9-096da51e20d6",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "06c9d3d6-e05a-4345-8dcb-3bf439de06f2",
+              "@type": "WorkflowStep",
+              "name": "Delete Repository Branch",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "name": "",
+                  "endPoint": "",
+                  "dryRun": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "delete_repository_branch",
+                "operationTitle": "Delete Repository Branch"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Deletes a branch from the repository based on the repository type and branch name that you have specified.",
+          "name": "Delete Repository Branch",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ccc0ff94-b7a4-4c35-85e9-096da51e20d6",
+          "routes": [
+            {
+              "uuid": "bca2accf-2bcb-4fbe-8da2-3d3098c4becf",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Delete Repository Branch",
+              "sourceStep": "/api/3/workflow_steps/ccc0ff94-b7a4-4c35-85e9-096da51e20d6",
+              "targetStep": "/api/3/workflow_steps/06c9d3d6-e05a-4345-8dcb-3bf439de06f2"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "94af7cf9-0416-4364-a2c5-6c69fd9815a0",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "bd2e88b7-17c8-4698-8c75-e51e417df26f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "dd520bc2-ae18-4797-a3d8-4664c76301cd",
+              "@type": "WorkflowStep",
+              "name": "Get Pull Request List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "pull_number": "",
+                  "filterText": "",
+                  "state": "Open",
+                  "direction": "INCOMING",
+                  "withAttributes": true,
+                  "withProperties": true,
+                  "draft": "",
+                  "order": "Newest",
+                  "start": "",
+                  "limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "list_pull_request",
+                "operationTitle": "Get Pull Request List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Lists pull requests for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+          "name": "Get Pull Request List",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/bd2e88b7-17c8-4698-8c75-e51e417df26f",
+          "routes": [
+            {
+              "uuid": "8cd323d2-6c19-4fb3-98cc-288256cfa77c",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Pull Request List",
+              "sourceStep": "/api/3/workflow_steps/bd2e88b7-17c8-4698-8c75-e51e417df26f",
+              "targetStep": "/api/3/workflow_steps/dd520bc2-ae18-4797-a3d8-4664c76301cd"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "864b712e-2671-4f9a-8708-03083b4026e2",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "78476290-d243-4c39-9f43-37abbe0b381b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "37b44e7b-2ebc-4469-b179-3df743d1036a",
+              "@type": "WorkflowStep",
+              "name": "Merge Pull Request",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "pullRequestId": "",
+                  "message": "",
+                  "strategyId": "",
+                  "version": "",
+                  "autoSubject": true,
+                  "autoMerge": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "merge_pull_request",
+                "operationTitle": "Merge Pull Request"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Accept and merge changes in the pull request based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Merge Pull Request",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/78476290-d243-4c39-9f43-37abbe0b381b",
+          "routes": [
+            {
+              "uuid": "9041e6a2-4298-48be-bdf5-6f8d2767cfd8",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Merge Pull Request",
+              "sourceStep": "/api/3/workflow_steps/78476290-d243-4c39-9f43-37abbe0b381b",
+              "targetStep": "/api/3/workflow_steps/37b44e7b-2ebc-4469-b179-3df743d1036a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "b9daf3f5-6cf9-4c1e-a93d-cc16a38ef78f",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "738a0cbb-ada6-467d-baaa-c99adcc6121f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "1935e5df-0dcf-472a-be76-fa0afde17594",
+              "@type": "WorkflowStep",
+              "name": "Create Pull Request",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "fromRef": "",
+                  "toRef": "",
+                  "title": "",
+                  "description": "",
+                  "reviewers": "",
+                  "draft": "",
+                  "additional_fields": {
+                    "version": 2154,
+                    "open": true
+                  }
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_pull_request",
+                "operationTitle": "Create Pull Request"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a pull request for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+          "name": "Create Pull Request",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/738a0cbb-ada6-467d-baaa-c99adcc6121f",
+          "routes": [
+            {
+              "uuid": "e0887945-5927-4298-9068-8cc25097e7ce",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Pull Request",
+              "sourceStep": "/api/3/workflow_steps/738a0cbb-ada6-467d-baaa-c99adcc6121f",
+              "targetStep": "/api/3/workflow_steps/1935e5df-0dcf-472a-be76-fa0afde17594"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "9391c3e2-9445-439e-afe9-3835b4d6170a",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "22676029-7de3-43de-bc65-2246049e0415",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "363355c3-3651-498a-81ad-64743cb96523",
+              "@type": "WorkflowStep",
+              "name": "Create Pull Request Comment",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "id": "",
+                  "text": "",
+                  "severity": "NORMAL",
+                  "state": "Open",
+                  "other_fields": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_pull_request_comment",
+                "operationTitle": "Create Pull Request Comment"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new note/comment on a pull request based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Create Pull Request Comment",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/22676029-7de3-43de-bc65-2246049e0415",
+          "routes": [
+            {
+              "uuid": "ab09e9c7-27d4-4077-8239-90fc92371a8d",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Pull Request Comment",
+              "sourceStep": "/api/3/workflow_steps/22676029-7de3-43de-bc65-2246049e0415",
+              "targetStep": "/api/3/workflow_steps/363355c3-3651-498a-81ad-64743cb96523"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "170b3240-979a-4c93-97b6-f96e72eb8615",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "46195a93-465c-4622-accb-e78aae469c5a",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "47fae968-c383-479c-8e0f-791fdc746830",
+              "@type": "WorkflowStep",
+              "name": "Get Tag List",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "filterText": "",
+                  "orderBy": "",
+                  "start": "",
+                  "limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "list_tags",
+                "operationTitle": "Get Tag List"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a paginated list of tags, sorted by the date when they were released, based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Get Tag List",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/46195a93-465c-4622-accb-e78aae469c5a",
+          "routes": [
+            {
+              "uuid": "33ea5878-db56-4fcb-9b92-55e30971e695",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Tag List",
+              "sourceStep": "/api/3/workflow_steps/46195a93-465c-4622-accb-e78aae469c5a",
+              "targetStep": "/api/3/workflow_steps/47fae968-c383-479c-8e0f-791fdc746830"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "253d8075-7dbe-4d74-a47e-2dc2cce6b242",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "b6916afd-a163-4ada-89d1-35737e1a1a1b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "69f1874a-9e32-4456-975d-36f57b9c21c7",
+              "@type": "WorkflowStep",
+              "name": "Create Tag",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "name": "",
+                  "startPoint": "",
+                  "message": "",
+                  "type": "",
+                  "force": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "create_tag",
+                "operationTitle": "Create Tag"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Creates a new Bitbucket tag based on the repository type, repository name, and other input parameters that you have specified. Developer level access to the repository is required to create a tag.",
+          "name": "Create Tag",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b6916afd-a163-4ada-89d1-35737e1a1a1b",
+          "routes": [
+            {
+              "uuid": "37e15788-359f-4e86-88d2-82ceb7b14c42",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Create Tag",
+              "sourceStep": "/api/3/workflow_steps/b6916afd-a163-4ada-89d1-35737e1a1a1b",
+              "targetStep": "/api/3/workflow_steps/69f1874a-9e32-4456-975d-36f57b9c21c7"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "eb4893e1-56a6-42b1-b615-783cddbd01bb",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "552b30e8-330b-4842-b690-2b8611c3dc6d",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "f686bf9e-a966-4949-9cb6-5009896b02c4",
+              "@type": "WorkflowStep",
+              "name": "Get Server URL",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "get_web_url",
+                "operationTitle": "Get Server URL"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves the server URL (Web URL) of the configured Bitbucket server.",
+          "name": "Get Server URL",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/552b30e8-330b-4842-b690-2b8611c3dc6d",
+          "routes": [
+            {
+              "uuid": "28ea8d60-a327-4c65-a44c-6decb51931c6",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Server URL",
+              "sourceStep": "/api/3/workflow_steps/552b30e8-330b-4842-b690-2b8611c3dc6d",
+              "targetStep": "/api/3/workflow_steps/f686bf9e-a966-4949-9cb6-5009896b02c4"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e06e46d0-f791-48be-9a10-ff890b64a92b",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "c70f6dd4-1995-4344-be36-111c89778043",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "158031d6-7b1e-4728-b06e-fdc4526cd41e",
+              "@type": "WorkflowStep",
+              "name": "Get Pull Request Comments",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "id": "",
+                  "fromId": "",
+                  "fromType": "",
+                  "start": "",
+                  "limit": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "list_pull_requests_comments",
+                "operationTitle": "Get Pull Request Comments"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Retrieves a list of all comments for a pull request based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Get Pull Request Comments",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c70f6dd4-1995-4344-be36-111c89778043",
+          "routes": [
+            {
+              "uuid": "24ffa2ed-d226-44be-9022-aff99fbbee19",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Pull Request Comments",
+              "sourceStep": "/api/3/workflow_steps/c70f6dd4-1995-4344-be36-111c89778043",
+              "targetStep": "/api/3/workflow_steps/158031d6-7b1e-4728-b06e-fdc4526cd41e"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7ec83c2b-664f-45e4-bc2f-5dc28fd7c17c",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "5bd8173c-6971-40e4-8dff-36552527b7ea",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "878465aa-7d77-454f-bf1c-14b9cd81913f",
+              "@type": "WorkflowStep",
+              "name": "Clone Repository",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "repo_type": "",
+                  "repo_name": "",
+                  "branch_name": "",
+                  "clone_zip": true
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "clone_repository",
+                "operationTitle": "Clone Repository"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Clones the specified repository in a Bitbucket project based on the repository type, repository name, and other input parameters that you have specified.",
+          "name": "Clone Repository",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/5bd8173c-6971-40e4-8dff-36552527b7ea",
+          "routes": [
+            {
+              "uuid": "543919b8-4951-44dd-b591-d2edbdeff78e",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Clone Repository",
+              "sourceStep": "/api/3/workflow_steps/5bd8173c-6971-40e4-8dff-36552527b7ea",
+              "targetStep": "/api/3/workflow_steps/878465aa-7d77-454f-bf1c-14b9cd81913f"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7753791e-35a9-45be-a45f-ed008ba2f775",
+          "collection": "/api/3/workflow_collections/1a139943-7517-431b-97bd-29afc834cbe6",
+          "steps": [
+            {
+              "uuid": "556d2862-12f7-47f4-8a9b-c07cb43d8c63",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                }
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
+            },
+            {
+              "uuid": "06ef5361-5bc4-476d-890a-840b38e819e4",
+              "@type": "WorkflowStep",
+              "name": "Update Remote Repository",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Bitbucket",
+                "config": "''",
+                "params": {
+                  "file_iri": "",
+                  "clone_path": ""
+                },
+                "version": "1.0.0",
+                "connector": "bitbucket",
+                "operation": "update_clone_repository",
+                "operationTitle": "Update Remote Repository"
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "triggerLimit": null,
+          "description": "Applies changes made in a FortiSOAR file to the specified remote repository that is cloned from Bitbucket based on the file IRI and cloned repository path you have specified",
+          "name": "Update Remote Repository",
+          "tag": "#Bitbucket",
+          "recordTags": [
+            "Bitbucket",
+            "bitbucket"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/556d2862-12f7-47f4-8a9b-c07cb43d8c63",
+          "routes": [
+            {
+              "uuid": "0d3a80e7-1482-4a30-afa0-98d9e4fb9cc5",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Update Remote Repository",
+              "sourceStep": "/api/3/workflow_steps/556d2862-12f7-47f4-8a9b-c07cb43d8c63",
+              "targetStep": "/api/3/workflow_steps/06ef5361-5bc4-476d-890a-840b38e819e4"
+            }
+          ]
+        }
+      ],
+      "name": "Sample - Bitbucket - 1.0.0",
+      "description": "Bitbucket is a comprehensive platform designed to streamline the software development process. It encompasses all aspects of the development lifecycle, offering seamless integration and efficiency throughout the journey from initial project planning to deployment and beyond. With Bitbucket, teams can seamlessly manage their source code, facilitate collaboration, and ensure the quality and security of their software.",
+      "visible": true,
+      "recordTags": [
+        "Bitbucket",
+        "bitbucket"
+      ]
+    }
+  ]
+}

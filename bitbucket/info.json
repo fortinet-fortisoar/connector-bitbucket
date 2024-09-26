@@ -1,0 +1,2679 @@
+{
+  "name": "bitbucket",
+  "label": "Bitbucket",
+  "version": "1.0.0",
+  "description": "Bitbucket is a comprehensive platform designed to streamline the software development process. It encompasses all aspects of the development lifecycle, offering seamless integration and efficiency throughout the journey from initial project planning to deployment and beyond. With Bitbucket, teams can seamlessly manage their source code, facilitate collaboration, and ensure the quality and security of their software.",
+  "publisher": "Fortinet",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "category": "Source Code Management",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-bitbucket/blob/release/1.0.0/docs/BitbucketConnectorDoc.md",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "Specify the IP address or hostname of the Bitbucket server to which you will connect and perform automated operations.",
+        "description": "Specify the IP address or hostname of the Bitbucket server to which you will connect and perform automated operations."
+      },
+      {
+        "title": "Username",
+        "type": "text",
+        "name": "username",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "Specify the username used to access the Bitbucket server to connect and perform the automated operations.",
+        "description": "Specify the username used to access the Bitbucket server to connect and perform the automated operations."
+      },
+      {
+        "title": "Access Token",
+        "type": "password",
+        "name": "api_key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "tooltip": "Specify the access token that is provided to you by a Bitbucket administrator that you will use to access the Bitbucket REST API.",
+        "description": "Specify the access token that is provided to you by a Bitbucket administrator that you will use to access the Bitbucket REST API. For information on generating access tokens, refer ."
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "type": "checkbox",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is set to True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "create_repository",
+      "title": "Create Repository",
+      "description": "Creates a new repository based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "create_repository",
+      "enabled": true,
+      "output_schema": {
+        "slug": "",
+        "id": "",
+        "name": "",
+        "hierarchyId": "",
+        "scmId": "",
+        "state": "",
+        "statusMessage": "",
+        "forkable": "",
+        "project": {
+          "key": "",
+          "id": "",
+          "name": "",
+          "description": "",
+          "public": "",
+          "type": "",
+          "links": {
+            "self": [
+              {
+                "href": ""
+              }
+            ]
+          }
+        },
+        "public": "",
+        "archived": "",
+        "links": {
+          "clone": [
+            {
+              "href": "",
+              "name": ""
+            }
+          ],
+          "self": [
+            {
+              "href": ""
+            }
+          ]
+        }
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, within which to create the repository.",
+                "description": "Specify the name of the organization on Bitbucket, within which to create the repository."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository to create on Bitbucket.",
+          "description": "Select the type of the repository to create on Bitbucket. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "description": "Specify the name of the repository to create.",
+          "tooltip": "Specify the name of the repository to create."
+        },
+        {
+          "title": "Repository Display Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "display_name",
+          "description": "Specify the name of the repository to create.",
+          "tooltip": "Specify the name of the repository to create."
+        },
+        {
+          "title": "Links",
+          "tooltip": "Specify links in the JSON format. For more information about other fields, see connector documentation.",
+          "description": "(Optional) Specify links in the JSON format",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "links"
+        }
+      ]
+    },
+    {
+      "operation": "delete_repository",
+      "title": "Delete Repository",
+      "description": "Deletes a repository including all associated resources, like issues and pull requests, based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "delete_repository",
+      "enabled": true,
+      "output_schema": {
+        "context": "",
+        "message": "",
+        "exceptionName": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, within which to delete the repository.",
+                "description": "Specify the name of the organization on Bitbucket, within which to delete the repository."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, whose repository is to be deleted.",
+                "description": "Specify the name of the repository owner on Bitbucket, whose repository is to be deleted."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository to delete on Bitbucket.",
+          "description": "Select the type of the repository to delete on Bitbucket. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository to delete.",
+          "tooltip": "Specify the name of the repository to delete."
+        }
+      ]
+    },
+    {
+      "operation": "get_file_from_repository",
+      "title": "Get File Details",
+      "description": "Retrieves information such as name, size, content, etc. about a file from the Bitbucket repository based on the repository ID, branch name, file name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "get_file_from_repository",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "lines": [
+          {
+            "text": ""
+          }
+        ],
+        "start": "",
+        "isLastPage": "",
+        "nextPageStart": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, within whose repository the file is to be retrieved.",
+                "description": "Specify the name of the organization on Bitbucket, within whose repository the file is to be retrieved."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, within whose repository the file is to be retrieved.",
+                "description": "Specify the name of the repository owner on Bitbucket, within whose repository the file is to be retrieved."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository from which to retrieve the file.",
+          "description": "Select the type of the repository from which to retrieve the file. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository from which the file is to be retrieved.",
+          "tooltip": "Specify the name of the repository from which the file is to be retrieved."
+        },
+        {
+          "title": "Branch Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "at",
+          "description": "Specify the name of the branch from which to retrieve the file.",
+          "tooltip": "Specify the name of the branch from which to retrieve the file."
+        },
+        {
+          "title": "File Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "file_path",
+          "tooltip": "Specify the name of the file to retrieve.",
+          "description": "Specify the name of the file to retrieve."
+        },
+        {
+          "title": "Size",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false,
+          "type": "checkbox",
+          "name": "size",
+          "description": "Select to retrieve only file size. File content will not be retrieved. By default, it is set to false",
+          "tooltip": "Select to retrieve only file size. File content will not be retrieved.",
+          "onchange": {
+            "false": [
+              {
+                "title": "Type",
+                "required": false,
+                "editable": true,
+                "visible": true,
+                "value": false,
+                "type": "checkbox",
+                "name": "type",
+                "description": "Select to retrieve only type of file in the response. File content will not be retrieved. By default, it is set to false",
+                "tooltip": "Select to retrieve only type of file in the response. File content will not be retrieved.",
+                "onchange": {
+                  "false": [
+                    {
+                      "title": "Blame",
+                      "required": false,
+                      "editable": true,
+                      "visible": true,
+                      "value": false,
+                      "type": "checkbox",
+                      "name": "blame",
+                      "description": "Select to retrieve blame in the response. By default, it is set to false",
+                      "tooltip": "Select to retrieve blame in the response."
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "operation": "create_update_file_contents",
+      "title": "Create or Update File Contents",
+      "description": "Creates or updates a single file in the Bitbucket repository based on the repository ID, branch name, file name and other input parameters.",
+      "category": "investigation",
+      "annotation": "update_file_in_repository",
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "author": {
+          "id": "",
+          "name": "",
+          "slug": "",
+          "type": "",
+          "links": {
+            "self": [
+              {
+                "href": ""
+              }
+            ]
+          },
+          "active": "",
+          "displayName": "",
+          "emailAddress": ""
+        },
+        "message": "",
+        "parents": [],
+        "committer": {
+          "id": "",
+          "name": "",
+          "slug": "",
+          "type": "",
+          "links": {
+            "self": [
+              {
+                "href": ""
+              }
+            ]
+          },
+          "active": "",
+          "displayName": "",
+          "emailAddress": ""
+        },
+        "displayId": "",
+        "authorTimestamp": "",
+        "committerTimestamp": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, within whose repository the file is to be created/updated.",
+                "description": "Specify the name of the organization on Bitbucket, within whose repository the file is to be created/updated.."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, within whose repository the file is to be updated.",
+                "description": "Specify the name of the repository owner on Bitbucket, within whose repository the file is to be updated."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to created/updated the file.",
+          "description": "Select the type of the repository in which to created/updated the file. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which the file is to be created/updated.",
+          "tooltip": "Specify the name of the repository in which the file is to be created/updated."
+        },
+        {
+          "title": "File Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "file_path",
+          "description": "Specify the name of the file to created/updatedcreated/updated.",
+          "tooltip": "Specify the name of the file to created/updatedcreated/updated."
+        },
+        {
+          "title": "Branch Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "branch",
+          "tooltip": "Specify the name of the branch in which to created/updated the file.",
+          "description": "Specify the name of the branch in which to created/updated the file."
+        },
+        {
+          "title": "Content Information",
+          "tooltip": "Specify the contents to update in the file being created/updated.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "textarea",
+          "name": "content",
+          "description": "Specify the contents to update in the file being created/updated."
+        },
+        {
+          "title": "Commit Message",
+          "tooltip": "Specify the commit message for creating/updating the file.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "message",
+          "description": "Specify the commit message for creating/updating the file."
+        },
+        {
+          "title": "Source Branch",
+          "tooltip": "Specify the starting point for branch. If provided and different from \"Branch Name\", branch will be created as a new branch, branching off from \"Source Branch\".",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "sourceBranch",
+          "description": "Specify the starting point for branch. If provided and different from \"Branch Name\", branch will be created as a new branch, branching off from \"Source Branch\"."
+        },
+        {
+          "title": "Source Commit ID",
+          "tooltip": "Specify the commit message for updating the file.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "sourceCommitId",
+          "description": "Specify the commit ID of the file before it was edited, used to identify if content has changed. Note: Do not specify this field if to create new file."
+        }
+      ]
+    },
+    {
+      "operation": "update_user_repository_permission",
+      "title": "Update User Repository Permission",
+      "description": "Updates(promote or demote) a user's permission levels for specified repository.",
+      "category": "investigation",
+      "annotation": "update_user_repository_permission",
+      "enabled": true,
+      "output_schema": {
+        "message": "",
+        "status_code": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization of the repository on Bitbucket whose user permissions is to be updated.",
+                "description": "Specify the name of the organization of the repository on Bitbucket whose user permissions is to be updated."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the account holder of the repository on Bitbucket whose user permissions is to be updated.",
+                "description": "Specify the account holder of the repository on Bitbucket whose user permissions is to be updated."
+              }
+            ]
+          },
+          "tooltip": "Select the repository type, using which you want to update the user permissions.",
+          "description": "Select the repository type, using which you want to update the user permissions.\nYou can choose from Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository on Bitbucket whose user permissions is to be updated.",
+          "tooltip": "Specify the name of the repository on Bitbucket whose user permissions is to be updated."
+        },
+        {
+          "title": "Usernames",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "name",
+          "description": "Specify the comma separated usernames of the user's whose repository permissions are to be updated.",
+          "tooltip": "Specify the comma separated usernames of the user's whose repository permissions are to be updated."
+        },
+        {
+          "title": "REPOSITORY Permissions",
+          "name": "permission",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "READ",
+            "WRITE",
+            "ADMIN"
+          ],
+          "tooltip": "Select the access level to grant to the specified collaborator. You can select from following options: ",
+          "description": "Select the access level to grant to the specified collaborator. You can select from following options: No access , Minimal access ,Guest ,Reporter ,Developer , Maintainer. NOTE: Permissions are applicable only on organization-owned repositories."
+        }
+      ]
+    },
+    {
+      "operation": "get_users_with_repository_permission",
+      "title": "Get Member List of Repository",
+      "description": "Retrieves a list of group or repository members viewable by the authenticated user, including inherited members, invited users, and permissions through ancestor groups.",
+      "category": "investigation",
+      "annotation": "get_users_with_repository_permission",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "start": "",
+        "values": [
+          {
+            "user": {
+              "id": "",
+              "name": "",
+              "slug": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              },
+              "active": "",
+              "displayName": "",
+              "emailAddress": ""
+            },
+            "permission": ""
+          }
+        ],
+        "isLastPage": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, from which to retrieve the collaborators.",
+                "description": "Specify the name of the organization on Bitbucket, from which to retrieve the collaborators."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, from which to retrieve the collaborators.",
+                "description": "Specify the name of the repository owner on Bitbucket, from which to retrieve the collaborators."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository to retrieve its collaborators.",
+          "description": "Select the type of the repository to retrieve its collaborators. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository from which to retrieve the collaborators.",
+          "tooltip": "Specify the name of the repository from which to retrieve the collaborators."
+        },
+        {
+          "title": "Filter",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "filter",
+          "description": "Specify a string to filter user names. Only user names containing this string will be returned.",
+          "tooltip": "Specify a string to filter user names. Only user names containing this string will be returned."
+        },
+        {
+          "title": "Page",
+          "name": "start",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which to return the results of the operation.",
+          "description": "(Optional) Specify the page number from which to return the results of the operation."
+        },
+        {
+          "title": "Per Page",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that this operation should return.",
+          "description": "(Optional) Specify the number of results, per page, that this operation should return."
+        }
+      ]
+    },
+    {
+      "operation": "find_repository_branches",
+      "title": "Get Repository Branch List",
+      "description": "Lists repository branches for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+      "category": "investigation",
+      "annotation": "find_repository_branches",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "start": "",
+        "values": [
+          {
+            "id": "",
+            "type": "",
+            "displayId": "",
+            "isDefault": "",
+            "latestCommit": "",
+            "latestChangeset": ""
+          }
+        ],
+        "isLastPage": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, whose repository's branches are to be retrieved, in the Organization Name field.",
+                "description": "Specify the name of the organization on Bitbucket, whose repository's branches are to be retrieved, in the Organization Name field."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "owner",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, whose repository's branches are to be retrieved, in the Repository Owner field.",
+                "description": "Specify the name of the repository owner on Bitbucket, whose repository's branches are to be retrieved, in the Repository Owner field."
+              }
+            ]
+          },
+          "tooltip": "Select the method using which you want to list of branches you want to retrieve from Bitbucket",
+          "description": "Select the type of the repository whose, branches are to be retrieved from Bitbucket. You can choose from Organization or User."
+        },
+        {
+          "title": "Repository Name",
+          "name": "repo_name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the repository whose branches are to be retrieved from Bitbucket",
+          "description": "Specify the name of the repository whose branches are to be retrieved from Bitbucket."
+        },
+        {
+          "title": "Filter Text",
+          "name": "filterText",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the text to filter retrieve branches contains the supplied string in name.",
+          "description": "(Optional) Specify the text to filter retrieve branches contains the supplied string in name."
+        },
+        {
+          "title": "Boost Matches to Top",
+          "name": "boostMatches",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": false,
+          "type": "checkbox",
+          "tooltip": "Specify whether to exact and prefix matches boost to the top of the search results.",
+          "description": "(Optional) Specify whether to exact and prefix matches boost to the top of the search results. By default set to false."
+        },
+        {
+          "title": "Retrieve Metadata",
+          "name": "details",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": false,
+          "type": "checkbox",
+          "tooltip": "Specify whether to retrieve plugin-provided metadata about each branch or not.",
+          "description": "(Optional) Specify whether to retrieve plugin-provided metadata about each branch or not. By default set to false."
+        },
+        {
+          "title": "Sort Order",
+          "name": "order",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "ALPHABETICAL",
+            "MODIFICATION"
+          ],
+          "tooltip": "Select the order to sort the results returned by this operation.",
+          "description": "(Optional) Select the order to sort the results returned by this operation. You can choose from the following options: ALPHABETICAL or MODIFICATION"
+        },
+        {
+          "title": "Page",
+          "name": "start",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which you want the operation to return the results of the operation. ",
+          "description": "(Optional) Specify the page number from which you want the operation to return the results of the operation."
+        },
+        {
+          "title": "Per Page",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that this operation should return.",
+          "description": "(Optional) Specify the number of results, per page, that this operation should return."
+        }
+      ]
+    },
+    {
+      "operation": "create_repository_branch",
+      "title": "Create Repository Branch",
+      "description": "Creates a new branch in the repository based on the repository type, branch name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "create_repository_branch",
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "type": "",
+        "displayId": "",
+        "isDefault": "",
+        "latestCommit": "",
+        "latestChangeset": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, in which to create the branch.",
+                "description": "Specify the name of the organization on Bitbucket, in which to create the branch."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, in which to create the branch.",
+                "description": "Specify the name of the repository owner on Bitbucket, in which to create the branch."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to create the branch.",
+          "description": "Select the type of the repository in which to create the branch. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which to create the branch.",
+          "tooltip": "Specify the name of the repository in which to create the branch."
+        },
+        {
+          "title": "Branch Name",
+          "name": "name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the branch to create.",
+          "description": "Specify the name of the branch to create."
+        },
+        {
+          "title": "Reference Branch",
+          "name": "startPoint",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the branch name or the commit ID from which to create the new branch.",
+          "description": "Specify the branch name or the commit ID from which to create the new branch."
+        }
+      ]
+    },
+    {
+      "operation": "delete_repository_branch",
+      "title": "Delete Repository Branch",
+      "description": "Deletes a branch from the repository based on the repository type and branch name that you have specified.",
+      "category": "investigation",
+      "annotation": "delete_repository_branch",
+      "enabled": true,
+      "output_schema": {
+        "status_code": "",
+        "message": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, in which to delete the branch.",
+                "description": "Specify the name of the organization on Bitbucket, in which to delete the branch."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, in which to delete the branch.",
+                "description": "Specify the name of the repository owner on Bitbucket, in which to delete the branch."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to delete the branch.",
+          "description": "Select the type of the repository in which to delete the branch. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which to delete the branch.",
+          "tooltip": "Specify the name of the repository in which to delete the branch."
+        },
+        {
+          "title": "Branch",
+          "name": "name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the branch to delete.",
+          "description": "Specify the name of the branch to delete."
+        },
+        {
+          "title": "End Point",
+          "name": "endPoint",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify commit ID that the provided branch is expected to point to.",
+          "description": "Specify commit ID that the provided branch is expected to point to."
+        },
+        {
+          "title": "Dry Run",
+          "name": "dryRun",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": false,
+          "type": "checkbox",
+          "tooltip": "Check to do just a dry run, Don't actually delete the branch.",
+          "description": "Check to do just a dry run, Don't actually delete the branch."
+        }
+      ]
+    },
+    {
+      "operation": "list_pull_request",
+      "title": "Get Pull Request List",
+      "description": "Lists pull requests for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+      "category": "investigation",
+      "annotation": "list_pull_request",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "isLastPage": "",
+        "values": [
+          {
+            "id": "",
+            "version": "",
+            "title": "",
+            "state": "",
+            "open": "",
+            "closed": "",
+            "draft": "",
+            "createdDate": "",
+            "updatedDate": "",
+            "fromRef": {
+              "id": "",
+              "displayId": "",
+              "latestCommit": "",
+              "type": "",
+              "repository": {
+                "slug": "",
+                "id": "",
+                "name": "",
+                "hierarchyId": "",
+                "scmId": "",
+                "state": "",
+                "statusMessage": "",
+                "forkable": "",
+                "project": {
+                  "key": "",
+                  "id": "",
+                  "name": "",
+                  "public": "",
+                  "type": "",
+                  "links": {
+                    "self": [
+                      {
+                        "href": ""
+                      }
+                    ]
+                  }
+                },
+                "public": "",
+                "archived": "",
+                "links": {
+                  "clone": [
+                    {
+                      "href": "",
+                      "name": ""
+                    }
+                  ],
+                  "self": [
+                    {
+                      "href": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "toRef": {
+              "id": "",
+              "displayId": "",
+              "latestCommit": "",
+              "type": "",
+              "repository": {
+                "slug": "",
+                "id": "",
+                "name": "",
+                "hierarchyId": "",
+                "scmId": "",
+                "state": "",
+                "statusMessage": "",
+                "forkable": "",
+                "project": {
+                  "key": "",
+                  "id": "",
+                  "name": "",
+                  "public": "",
+                  "type": "",
+                  "links": {
+                    "self": [
+                      {
+                        "href": ""
+                      }
+                    ]
+                  }
+                },
+                "public": "",
+                "archived": "",
+                "links": {
+                  "clone": [
+                    {
+                      "href": "",
+                      "name": ""
+                    }
+                  ],
+                  "self": [
+                    {
+                      "href": ""
+                    }
+                  ]
+                }
+              }
+            },
+            "locked": "",
+            "author": {
+              "user": {
+                "name": "",
+                "emailAddress": "",
+                "active": "",
+                "displayName": "",
+                "id": "",
+                "slug": "",
+                "type": "",
+                "links": {
+                  "self": [
+                    {
+                      "href": ""
+                    }
+                  ]
+                }
+              },
+              "role": "",
+              "approved": "",
+              "status": ""
+            },
+            "reviewers": [],
+            "participants": [],
+            "properties": {
+              "mergeResult": {
+                "outcome": "",
+                "current": ""
+              },
+              "resolvedTaskCount": "",
+              "commentCount": "",
+              "openTaskCount": ""
+            },
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ]
+            }
+          }
+        ],
+        "start": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, whose repository's pull requests are to be retrieved, in the Organization Name field.",
+                "description": "Specify the name of the organization on Bitbucket, whose repository's pull requests are to be retrieved, in the Organization Name field."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "owner",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, whose repository's pull requests are to be retrieved, in the Repository Owner field.",
+                "description": "Specify the name of the repository owner on Bitbucket, whose repository's pull requests are to be retrieved, in the Repository Owner field."
+              }
+            ]
+          },
+          "tooltip": "Select the method using which you want to list of pull requests you want to retrieve from Bitbucket",
+          "description": "Select the type of the repository whose, pull requests are to be retrieved from Bitbucket. You can choose from Organization or User."
+        },
+        {
+          "title": "Repository Name",
+          "name": "repo_name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the repository whose pull requests are to be retrieved from Bitbucket",
+          "description": "Specify the name of the repository whose pull requests are to be retrieved from Bitbucket."
+        },
+        {
+          "title": "Pull Number",
+          "name": "pull_number",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the ID of the pull request which is to be retrieved.",
+          "description": "(Optional) Specify the ID of the pull request which is to be retrieved."
+        },
+        {
+          "title": "Filter Text",
+          "name": "filterText",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the text to filter retrieve pull requests contains the supplied string in title or description.",
+          "description": "(Optional) Specify the text to filter retrieve pull requests contains the supplied string in title or description."
+        },
+        {
+          "title": "State",
+          "name": "state",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "ALL",
+            "OPEN",
+            "DECLINED",
+            "MERGED"
+          ],
+          "value": "Open",
+          "tooltip": "Select the state of the pull requests whose details you want to retrieve from Bitbucket. The state parameter filters the results returned by this operation to only pull requests that match the selected state.",
+          "description": "(Optional) Select the state of the pull requests whose details you want to retrieve from Bitbucket. The state parameter filters the results returned by this operation to only pull requests that match the selected state. You can choose between All, Open, DECLINED or MERGED."
+        },
+        {
+          "title": "Direction",
+          "name": "direction",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "INCOMING",
+            "OUTGOING"
+          ],
+          "value": "INCOMING",
+          "tooltip": "Select the direction relative to the specified repository.",
+          "description": "(Optional) Select the direction relative to the specified repository. You can choose from the following options: INCOMING or OUTGOING",
+          "onchange": {
+            "INCOMING": [
+              {
+                "title": "Target Branch",
+                "name": "at",
+                "visible": true,
+                "required": false,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the fully-qualified branch ID of the target branch to filter the results returned by this operation to only pull requests that match the specified target branch name",
+                "description": "(Optional) Specify the fully-qualified branch ID of the target branch to filter the results returned by this operation to only pull requests that match the specified target branch name."
+              }
+            ],
+            "OUTGOING": [
+              {
+                "title": "Source Branch",
+                "name": "at",
+                "visible": true,
+                "required": false,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the fully-qualified branch ID of the source branch to filter the results returned by this operation to only pull requests that match the specified source branch name",
+                "description": "(Optional) Specify the fully-qualified branch ID of the source branch to filter the results returned by this operation to only pull requests that match the specified source branch name."
+              }
+            ]
+          }
+        },
+        {
+          "title": "With Attributes",
+          "name": "withAttributes",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": true,
+          "type": "checkbox",
+          "tooltip": "Specify whether to return additional pull request attributes.",
+          "description": "whether to return additional pull request attributes."
+        },
+        {
+          "title": "With Properties",
+          "name": "withProperties",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": true,
+          "type": "checkbox",
+          "tooltip": "Specify whether to return additional pull request properties.",
+          "description": "whether to return additional pull request properties."
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "tooltip": "Specify draft status of pull requests to be retrieved.",
+          "description": "Specify draft status of pull requests to be retrieved.",
+          "options": [
+            "True",
+            "False"
+          ]
+        },
+        {
+          "title": "Sort Order",
+          "name": "order",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "NEWEST",
+            "OLDEST"
+          ],
+          "value": "Newest",
+          "tooltip": "Select the order to sort the results returned by this operation.",
+          "description": "(Optional) Select the order to sort the results returned by this operation. You can choose from the following options: NEWEST or OLDEST"
+        },
+        {
+          "title": "Page",
+          "name": "start",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which you want the operation to return the results of the operation. ",
+          "description": "(Optional) Specify the page number from which you want the operation to return the results of the operation."
+        },
+        {
+          "title": "Per Page",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that this operation should return.",
+          "description": "(Optional) Specify the number of results, per page, that this operation should return."
+        }
+      ]
+    },
+    {
+      "operation": "merge_pull_request",
+      "title": "Merge Pull Request",
+      "description": "Accept and merge changes in the pull request based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "merge_pull_request",
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "open": "",
+        "draft": "",
+        "links": {
+          "self": [
+            {
+              "href": ""
+            }
+          ]
+        },
+        "state": "",
+        "title": "",
+        "toRef": {
+          "id": "",
+          "type": "",
+          "displayId": "",
+          "repository": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ],
+              "clone": [
+                {
+                  "href": "",
+                  "name": ""
+                }
+              ]
+            },
+            "scmId": "",
+            "state": "",
+            "public": "",
+            "project": {
+              "id": "",
+              "key": "",
+              "name": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              },
+              "public": ""
+            },
+            "archived": "",
+            "forkable": "",
+            "hierarchyId": "",
+            "statusMessage": ""
+          },
+          "latestCommit": ""
+        },
+        "author": {
+          "role": "",
+          "user": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "type": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ]
+            },
+            "active": "",
+            "displayName": "",
+            "emailAddress": ""
+          },
+          "status": "",
+          "approved": ""
+        },
+        "closed": "",
+        "locked": "",
+        "fromRef": {
+          "id": "",
+          "type": "",
+          "displayId": "",
+          "repository": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ],
+              "clone": [
+                {
+                  "href": "",
+                  "name": ""
+                }
+              ]
+            },
+            "scmId": "",
+            "state": "",
+            "public": "",
+            "project": {
+              "id": "",
+              "key": "",
+              "name": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              },
+              "public": ""
+            },
+            "archived": "",
+            "forkable": "",
+            "hierarchyId": "",
+            "statusMessage": ""
+          },
+          "latestCommit": ""
+        },
+        "version": "",
+        "reviewers": [],
+        "closedDate": "",
+        "properties": {
+          "mergeCommit": {
+            "id": "",
+            "displayId": ""
+          }
+        },
+        "createdDate": "",
+        "updatedDate": "",
+        "description": "",
+        "participants": []
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, in which to merge the pull request.",
+                "description": "Specify the name of the organization on Bitbucket, in which to merge the pull request."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, in which to merge the pull request.",
+                "description": "Specify the name of the repository owner on Bitbucket, in which to merge the pull request."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to merge the pull request. You can select from the following options: Organization and User.",
+          "description": "Select the type of the repository in which to merge the pull request. You can select from the following options: Organization and User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which to merge the pull request.",
+          "tooltip": "Specify the name of the repository in which to merge the pull request."
+        },
+        {
+          "title": "Pull Request ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "pullRequestId",
+          "description": "Specify The ID of the pull request to merge.",
+          "tooltip": "Specify The ID of the pull request to merge."
+        },
+        {
+          "title": "Merge Commit Message",
+          "name": "message",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify a message to attach to the merge commit.",
+          "description": "(Optional) Specify a message to attach to the merge commit."
+        },
+        {
+          "title": "Strategy",
+          "name": "strategyId",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "tooltip": "Select the strategy used to merge pull request.",
+          "description": "(Optional) Specify the strategy used to merge pull request. You can choose from  'Merge Commit', 'Fast-forward', 'Fast-forward only', 'Rebase and merge', 'Rebase and fast-forward', 'Squash' or'Squash, fast-forward only'",
+          "options": [
+            "Merge Commit",
+            "Fast-forward",
+            "Fast-forward only",
+            "Rebase and merge",
+            "Rebase and fast-forward",
+            "Squash",
+            "Squash, fast-forward only"
+          ]
+        },
+        {
+          "title": "Version",
+          "name": "version",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the current version of the pull request. If the server's version isn't the same as the specified version the operation will fail. ",
+          "description": "(Optional) Specify the current version of the pull request. If the server's version isn't the same as the specified version the operation will fail. "
+        },
+        {
+          "title": "Auto Subject",
+          "name": "autoSubject",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": true,
+          "type": "checkbox",
+          "tooltip": "Specify whether you want prepend auto-generated subject to the Merge Commit Message or not.",
+          "description": "(Optional) Specify whether you want prepend auto-generated subject to the Merge Commit Message or not."
+        },
+        {
+          "title": "Auto Merge",
+          "name": "autoMerge",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "value": false,
+          "type": "checkbox",
+          "tooltip": "Specify whether you want automatically merge this pull request when all check passes.",
+          "description": "(Optional) Specify whether you want automatically merge this pull request when all check passes."
+        }
+      ]
+    },
+    {
+      "operation": "create_pull_request",
+      "title": "Create Pull Request",
+      "description": "Creates a pull request for the specified repository on Bitbucket based on the repository type, organization or repository owner's name, repository name, and other input parameters you have specified",
+      "category": "investigation",
+      "annotation": "create_pull_request",
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "open": "",
+        "draft": "",
+        "links": {
+          "self": [
+            {
+              "href": ""
+            }
+          ]
+        },
+        "state": "",
+        "title": "",
+        "description": "",
+        "toRef": {
+          "id": "",
+          "type": "",
+          "displayId": "",
+          "repository": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ],
+              "clone": [
+                {
+                  "href": "",
+                  "name": ""
+                }
+              ]
+            },
+            "scmId": "",
+            "state": "",
+            "public": "",
+            "project": {
+              "id": "",
+              "key": "",
+              "name": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              },
+              "public": ""
+            },
+            "archived": "",
+            "forkable": "",
+            "hierarchyId": "",
+            "statusMessage": ""
+          },
+          "latestCommit": ""
+        },
+        "author": {
+          "role": "",
+          "user": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "type": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ]
+            },
+            "active": "",
+            "displayName": "",
+            "emailAddress": ""
+          },
+          "status": "",
+          "approved": ""
+        },
+        "closed": "",
+        "locked": "",
+        "fromRef": {
+          "id": "",
+          "type": "",
+          "displayId": "",
+          "repository": {
+            "id": "",
+            "name": "",
+            "slug": "",
+            "links": {
+              "self": [
+                {
+                  "href": ""
+                }
+              ],
+              "clone": [
+                {
+                  "href": "",
+                  "name": ""
+                }
+              ]
+            },
+            "scmId": "",
+            "state": "",
+            "public": "",
+            "project": {
+              "id": "",
+              "key": "",
+              "name": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              },
+              "public": ""
+            },
+            "archived": "",
+            "forkable": "",
+            "hierarchyId": "",
+            "statusMessage": ""
+          },
+          "latestCommit": ""
+        },
+        "version": "",
+        "reviewers": [],
+        "createdDate": "",
+        "updatedDate": "",
+        "participants": []
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, of the repository in which to create a pull request, in the Organization Name field.",
+                "description": "Specify the name of the organization on Bitbucket, of the repository in which to create a pull request, in the Organization Name field."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "owner",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, of the repository in which to create a pull request, in the Repository Owner field.",
+                "description": "Specify the name of the repository owner on Bitbucket, of the repository in which to create a pull request, in the Repository Owner field."
+              }
+            ]
+          },
+          "tooltip": "Select the method using which you want to create a pull request on Bitbucket",
+          "description": "Select the type of the repository in which to create a pull request on Bitbucket. You can choose from Organization or User."
+        },
+        {
+          "title": "Repository Name",
+          "name": "repo_name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the repository on which you want to create a pull request on Bitbucket",
+          "description": "Specify the name of the repository on which you want to create a pull request on Bitbucket."
+        },
+        {
+          "title": "Head Repository",
+          "name": "fromRef",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace head with a user like this: username:branch",
+          "description": "Specify the name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace head with a user like this: username:branch."
+        },
+        {
+          "title": "Base Branch",
+          "name": "toRef",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the name of the branch to which you want to pull the changes. \nThe branch to which you want to pull the changes should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository",
+          "description": "Specify the name of the branch to which you want to pull the changes. The branch to which you want to pull the changes should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
+        },
+        {
+          "title": "Title",
+          "name": "title",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the title of the new pull request that you want to create on Bitbucket",
+          "description": "Specify the title of the new pull request that you want to create on Bitbucket."
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "richtext",
+          "tooltip": "Specify the contents of the new pull request that you want to create on Bitbucket",
+          "description": "Specify the contents of the new pull request that you want to create on Bitbucket."
+        },
+        {
+          "title": "Reviewers",
+          "name": "reviewers",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the comma separated list of usernames to add as a reviewer to the pull request.",
+          "description": "Specify the comma separated list of usernames to add as a reviewer to the pull request"
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "Select this option to create the pull request as a 'Draft'",
+          "description": "Select this option to create the pull request as a 'Draft'."
+        },
+        {
+          "title": "Additional Fields",
+          "name": "additional_fields",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "json",
+          "value": {
+            "version": 2154,
+            "open": true
+          },
+          "tooltip": "Specify the additional parameters in key-value format. For more information see, connector documentation.",
+          "description": "Specify the additional parameters in key-value format. For example,{\n            \"version\": 2154,\n            \"open\": true,\n            \"id\": 1\n          } For more information see, https://developer.atlassian.com/server/bitbucket/rest/v819/api-group-pull-requests/#api-api-latest-projects-projectkey-repos-repositoryslug-pull-requests-post"
+        }
+      ]
+    },
+    {
+      "operation": "create_pull_request_comment",
+      "title": "Create Pull Request Comment",
+      "description": "Creates a new note/comment on a pull request based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "create_pull_request_comment",
+      "enabled": true,
+      "output_schema": {
+        "properties": {
+          "repositoryId": ""
+        },
+        "id": "",
+        "version": "",
+        "text": "",
+        "author": {
+          "name": "",
+          "emailAddress": "",
+          "active": "",
+          "displayName": "",
+          "id": "",
+          "slug": "",
+          "type": "",
+          "links": {
+            "self": [
+              {
+                "href": ""
+              }
+            ]
+          }
+        },
+        "createdDate": "",
+        "updatedDate": "",
+        "comments": [],
+        "threadResolved": "",
+        "severity": "",
+        "state": "",
+        "permittedOperations": {
+          "editable": "",
+          "transitionable": "",
+          "deletable": ""
+        }
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, in which to create a pull request comment.",
+                "description": "Specify the name of the organization on Bitbucket, in which to create a pull request comment."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, in which to create a pull request comment.",
+                "description": "Specify the name of the repository owner on Bitbucket, in which to create a pull request comment."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to create a pull request comment. You can select from the following options: Organization, User.",
+          "description": "Select the type of the repository in which to create a pull request comment. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which to create the pull request comment.",
+          "tooltip": "Specify the name of the repository in which to create the pull request comment."
+        },
+        {
+          "title": "Pull Request ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "id",
+          "description": "Specify the ID of a pull request to create the comment.",
+          "tooltip": "Specify the ID of a pull request to create the comment."
+        },
+        {
+          "title": "Description",
+          "name": "text",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "richtext",
+          "tooltip": "Specify text for the pull request comment.",
+          "description": "Specify text for the pull request comment."
+        },
+        {
+          "title": "Severity",
+          "name": "severity",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "value": "NORMAL",
+          "tooltip": "Select the severity of the comment. You can choose from NORMAL: To add a comment, BLOCKER: To create a task.",
+          "description": "Select the severity of the comment. You can choose from NORMAL: To add a comment, BLOCKER: To create a task.",
+          "options": [
+            "NORMAL",
+            "BLOCKER"
+          ]
+        },
+        {
+          "title": "State",
+          "name": "state",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "value": "Open",
+          "tooltip": "Select the state of the comment.",
+          "description": "Select the state of the comment. You can choose from OPEN or PENDING.",
+          "options": [
+            "OPEN",
+            "PENDING"
+          ]
+        },
+        {
+          "title": "Other Fields",
+          "tooltip": "Specify other fields in the JSON format",
+          "description": "(Optional) Specify other fields in the JSON format",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "json",
+          "name": "other_fields"
+        }
+      ]
+    },
+    {
+      "operation": "list_tags",
+      "title": "Get Tag List",
+      "description": "Retrieves a paginated list of tags, sorted by the date when they were released, based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "list_releases",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "start": "",
+        "values": [
+          {
+            "id": "",
+            "hash": "",
+            "type": "",
+            "displayId": "",
+            "latestCommit": "",
+            "latestChangeset": ""
+          }
+        ],
+        "isLastPage": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, from which to retrieve the list of tag.",
+                "description": "Specify the name of the organization on Bitbucket, from which to retrieve the list of tag."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, from which to retrieve the list of tags.",
+                "description": "Specify the name of the repository owner on Bitbucket, from which to retrieve the list of tags."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository from which to retrieve the list of tags. You can select from the following options: Organization and User.",
+          "description": "Select the type of the repository from which to retrieve the list of tags. You can select from the following options: Organization and User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository from which to retrieve the list of tags.",
+          "tooltip": "Specify the name of the repository from which to retrieve the list of tags."
+        },
+        {
+          "title": "Filter Text",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "filterText",
+          "description": "Specify the filter text to retrieve the matching tags.",
+          "tooltip": "Specify the filter text to retrieve the matching tags."
+        },
+        {
+          "title": "Order By",
+          "name": "orderBy",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "ALPHABETICAL",
+            "MODIFICATION"
+          ],
+          "tooltip": "Select the sorting criteria to sort the results.",
+          "description": "(Optional) Select the sorting criteria to sort the results. You can select from the following options: ALPHABETICAL and MODIFICATION."
+        },
+        {
+          "title": "Page",
+          "name": "start",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which to return the results of the operation.",
+          "description": "(Optional) Specify the page number from which to return the results of the operation."
+        },
+        {
+          "title": "Per Page",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the number of results, per page, that this operation should return."
+        }
+      ]
+    },
+    {
+      "operation": "create_tag",
+      "title": "Create Tag",
+      "description": "Creates a new Bitbucket tag based on the repository type, repository name, and other input parameters that you have specified. Developer level access to the repository is required to create a tag.",
+      "category": "investigation",
+      "annotation": "create_tag",
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "hash": "",
+        "type": "",
+        "displayId": "",
+        "latestCommit": "",
+        "latestChangeset": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, in which to create the tag.",
+                "description": "Specify the name of the organization on Bitbucket, in which to create the tag."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, in which to create the tag.",
+                "description": "Specify the name of the repository owner on Bitbucket, in which to create the tag."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository in which to create the tag. You can select from the following options: Organization: and User.",
+          "description": "Select the type of the repository in which to create the tag. You can select from the following options: Organization: and User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository in which to create the tag.",
+          "tooltip": "Specify the name of the repository in which to create the tag."
+        },
+        {
+          "title": "Tag Name",
+          "name": "name",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the tag from where the tag is created.",
+          "description": "Specify the tag from where the tag is created."
+        },
+        {
+          "title": "Target Branch",
+          "name": "startPoint",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the branch(ref) name or a commit ID from where the tag is to be created.",
+          "description": "(Optional) Specify the branch(ref) name or a commit ID from where the tag is to be created."
+        },
+        {
+          "title": "Tag Message",
+          "name": "message",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the message to use if creating a new tag.",
+          "description": "(Optional) Specify the message to use if creating a new tag."
+        },
+        {
+          "title": "Type",
+          "name": "type",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "tooltip": "Specify the type of tag which is to be created.",
+          "description": "(Optional) Specify the type of tag which is to be created.",
+          "options": [
+            "ANNOTATED",
+            "LIGHTWEIGHT"
+          ]
+        },
+        {
+          "title": "Overwrite",
+          "name": "force",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "checkbox",
+          "tooltip": "Specify whether you want to overwrite tag if tag with same name already exists.",
+          "description": "Specify whether you want to overwrite tag if tag with same name already exists. By default , it is set to false.",
+          "value": false
+        }
+      ]
+    },
+    {
+      "operation": "get_web_url",
+      "title": "Get Server URL",
+      "description": "Retrieves the server URL (Web URL) of the configured Bitbucket server.",
+      "category": "investigation",
+      "annotation": "get_web_url",
+      "enabled": true,
+      "output_schema": {
+        "server_url": ""
+      },
+      "parameters": []
+    },
+    {
+      "operation": "list_pull_requests_comments",
+      "title": "Get Pull Request Comments",
+      "description": "Retrieves a list of all comments for a pull request based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "list_pull_request_comments",
+      "enabled": true,
+      "output_schema": {
+        "size": "",
+        "limit": "",
+        "isLastPage": "",
+        "values": [
+          {
+            "id": "",
+            "createdDate": "",
+            "user": {
+              "name": "",
+              "emailAddress": "",
+              "active": "",
+              "displayName": "",
+              "id": "",
+              "slug": "",
+              "type": "",
+              "links": {
+                "self": [
+                  {
+                    "href": ""
+                  }
+                ]
+              }
+            },
+            "action": "",
+            "commentAction": "",
+            "comment": {
+              "properties": {
+                "repositoryId": ""
+              },
+              "id": "",
+              "version": "",
+              "text": "",
+              "author": {
+                "name": "",
+                "emailAddress": "",
+                "active": "",
+                "displayName": "",
+                "id": "",
+                "slug": "",
+                "type": "",
+                "links": {
+                  "self": [
+                    {
+                      "href": ""
+                    }
+                  ]
+                }
+              },
+              "createdDate": "",
+              "updatedDate": "",
+              "comments": [],
+              "threadResolved": "",
+              "severity": "",
+              "state": "",
+              "permittedOperations": {
+                "editable": "",
+                "transitionable": "",
+                "deletable": ""
+              }
+            }
+          }
+        ],
+        "start": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, from which to retrieve the pull request comments.",
+                "description": "Specify the name of the organization on Bitbucket, from which to retrieve the pull request comments."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, from which to retrieve the pull request comments.",
+                "description": "Specify the name of the repository owner on Bitbucket, from which to retrieve the pull request comments."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository from which to retrieve the pull request comments. You can select from the following options: Organization, User.",
+          "description": "Select the type of the repository from which to retrieve the pull request comments. You can select from the following options: Organization, User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository from whose pull request the comments are to be retrieved.",
+          "tooltip": "Specify the name of the repository from whose pull request the comments are to be retrieved."
+        },
+        {
+          "title": "Pull Request ID",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "name": "id",
+          "description": "Specify the ID of a pull request whose comments are to be retrieved.",
+          "tooltip": "Specify the ID of a pull request whose comments are to be retrieved."
+        },
+        {
+          "title": "From ID",
+          "name": "fromId",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Select the sort order to sort the results. You can select from the following options: Ascending and Descending. Default sort order is Descending.",
+          "description": "(Optional) Select the sort order to sort the results. You can select from the following options: Ascending and Descending. Default sort order is Descending."
+        },
+        {
+          "title": "From Type",
+          "name": "fromType",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "COMMENT",
+            "ACTIVITY"
+          ],
+          "tooltip": "Select the type of the activity item specified by From ID.",
+          "description": "(Optional) Select the type of the activity item specified by From ID. You can select from the following options: COMMENT, ACTIVITY. Note: Required if From ID parameter is provided."
+        },
+        {
+          "title": "Page",
+          "name": "start",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "Specify the page number from which to return the results of the operation.",
+          "description": "(Optional) Specify the page number from which to return the results of the operation."
+        },
+        {
+          "title": "Per Page",
+          "name": "limit",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "integer",
+          "tooltip": "(Optional) Specify the number of results, per page, that this operation should return."
+        }
+      ]
+    },
+    {
+      "operation": "clone_repository",
+      "title": "Clone Repository",
+      "description": "Clones the specified repository in a Bitbucket project based on the repository type, repository name, and other input parameters that you have specified.",
+      "category": "investigation",
+      "annotation": "clone_repository",
+      "enabled": true,
+      "output_schema": {
+        "path": ""
+      },
+      "parameters": [
+        {
+          "title": "Repository Type",
+          "name": "repo_type",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "select",
+          "options": [
+            "Organization",
+            "User"
+          ],
+          "onchange": {
+            "Organization": [
+              {
+                "title": "Organization Name",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the organization on Bitbucket, to clone.",
+                "description": "Specify the name of the organization on Bitbucket, to clone."
+              }
+            ],
+            "User": [
+              {
+                "title": "Repository Owner",
+                "name": "org",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "text",
+                "tooltip": "Specify the name of the repository owner on Bitbucket, to clone.",
+                "description": "Specify the name of the repository owner on Bitbucket, to clone."
+              }
+            ]
+          },
+          "tooltip": "Select the type of the repository to clone. You can select from the following options: Organization and User.",
+          "description": "Select the type of the repository to clone. You can select from the following options: Organization and User."
+        },
+        {
+          "title": "Repository Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "repo_name",
+          "description": "Specify the name of the repository to clone.",
+          "tooltip": "Specify the name of the repository to clone."
+        },
+        {
+          "title": "Branch Name",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "branch_name",
+          "description": "Specify the branch name of the repository to clone.",
+          "tooltip": "Specify the branch name of the repository to clone."
+        },
+        {
+          "title": "Clone As ZIP",
+          "name": "clone_zip",
+          "visible": true,
+          "required": false,
+          "editable": true,
+          "type": "checkbox",
+          "value": true,
+          "onchange": {
+            "true": [
+              {
+                "title": "Archive Format",
+                "name": "archive_format",
+                "visible": true,
+                "required": true,
+                "editable": true,
+                "type": "select",
+                "options": [
+                  "zip",
+                  "tgz",
+                  "tar.gz",
+                  "tar"
+                ],
+                "value": "zip",
+                "tooltip": "Select an archive format from the following options.",
+                "description": "Select an archive format from the following options. You can choose from zip, tar.gz, tar, tar.bz2."
+              }
+            ]
+          },
+          "tooltip": "Select this option to clone the specified repository as a zip file.",
+          "description": "Select this option to clone the specified repository as a zip file."
+        }
+      ]
+    },
+    {
+      "operation": "update_clone_repository",
+      "title": "Update Remote Repository",
+      "description": "Applies changes made in a FortiSOAR file to the specified remote repository that is cloned from Bitbucket based on the file IRI and cloned repository path you have specified",
+      "category": "investigation",
+      "annotation": "update_remote_repository",
+      "enabled": true,
+      "output_schema": {
+        "status": ""
+      },
+      "parameters": [
+        {
+          "title": "FortiSOAR File IRI",
+          "name": "file_iri",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the FortiSOAR file IRI whose changes replace in the specified local repository.",
+          "description": "Specify the FortiSOAR file IRI whose changes replace in the specified local repository."
+        },
+        {
+          "title": "Cloned Repository Path",
+          "name": "clone_path",
+          "visible": true,
+          "required": true,
+          "editable": true,
+          "type": "text",
+          "tooltip": "Specify the path of the cloned repository to which to apply the changes of the specified FortiSOAR file.",
+          "description": "Specify the path of the cloned repository to which to apply the changes of the specified FortiSOAR file."
+        }
+      ]
+    }
+  ]
+}
