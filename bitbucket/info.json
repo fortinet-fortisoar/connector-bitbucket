@@ -23,6 +23,17 @@
         "description": "Specify the IP address or hostname of the Bitbucket server to which you will connect and perform automated operations."
       },
       {
+        "title": "Port",
+        "type": "integer",
+        "name": "port",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "value": 443,
+        "tooltip": "Specify the port of the Bitbucket server to connect and perform automated operations.",
+        "description": "Specify the port of the Bitbucket server to connect and perform automated operations. By default, it is set, 443."
+      },
+      {
         "title": "Username",
         "type": "text",
         "name": "username",

@@ -27,6 +27,8 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 <p>In FortiSOAR&trade;, on the Connectors page, click the <strong>Bitbucket</strong> connector row (if you are in the <strong>Grid</strong> view on the Connectors page) and in the <strong>Configurations</strong> tab enter the required configuration details:</p>
 <table border=1><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td>Server URL</td><td>Specify the IP address or hostname of the Bitbucket server to which you will connect and perform automated operations.
 </td>
+</tr><tr><td>Port</td><td>Specify the port of the Bitbucket server to connect and perform automated operations. By default, it is set, 443.
+</td>
 </tr><tr><td>Username</td><td>Specify the username used to access the Bitbucket server to connect and perform the automated operations.
 </td>
 </tr><tr><td>Access Token</td><td>Specify the access token that is provided to you by a Bitbucket administrator that you will use to access the Bitbucket REST API. For information on generating access tokens, refer .

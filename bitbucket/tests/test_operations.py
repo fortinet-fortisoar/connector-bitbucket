@@ -64,7 +64,15 @@ def test_check_health_invalid_server_url(valid_credentials):
     invalid_creds['server_url'] = params.get('invalid_params')['text']
     with pytest.raises(ConnectorError):
         assert operations['check_health'](invalid_creds)
-    
+
+
+@pytest.mark.checkhealth
+def test_check_health_invalid_port(valid_credentials):
+    invalid_creds = valid_credentials.copy()
+    invalid_creds['port'] = params.get('invalid_params')['integer']
+    with pytest.raises(ConnectorError):
+        assert operations['check_health'](invalid_creds)
+
 
 @pytest.mark.checkhealth     
 def test_check_health_invalid_username(valid_credentials):
