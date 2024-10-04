@@ -24,6 +24,9 @@ class BitBucket:
         self.server_url = config.get('server_url').strip('/')
         if not (self.server_url.startswith('https://') or self.server_url.startswith('http://')):
             self.server_url = 'https://' + self.server_url
+        port = config.get('port')
+        if port != 443:
+            self.server_url += ':{0}'.format(port)
         self.username = config.get('username')
         self.api_key = config.get('api_key')
         self.verify_ssl = config.get('verify_ssl')

@@ -2,6 +2,7 @@
     "config": [
         {
             "server_url": "",
+            "port": "",
             "username": "",
             "api_key": "",
             "verify_ssl": true
